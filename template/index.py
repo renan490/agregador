@@ -1,8 +1,9 @@
 from flask import Flask, render_template 
 app = Flask(__name__)
 app.debug = True
+from linksprincipais import Noticias
 
-#Articles = Articles()
+Noticias = Noticias()
 
 
 @app.route('/')
@@ -27,7 +28,7 @@ def about():
 
 @app.route('/articles')
 def articles():
-    return render_template('articles.html', articles = Articles)
+    return render_template('articles.html', articles = Noticias.articles())
 
 @app.route('/article/<string:id>/')
 def article(id):
